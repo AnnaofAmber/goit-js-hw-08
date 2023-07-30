@@ -15,7 +15,6 @@ function inputData() {
     data.email = input.value
     data.message = textarea.value
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
-    console.log(data);
    
     
 }
@@ -31,8 +30,11 @@ function auto() {
 }
 
 function submitData(event) {
-    if (event.target.nodeName ==! 'BUTTON') 
-        return
-   
+    event.preventDefault()
+    const item = localStorage.getItem(STORAGE_KEY)
+    const parsedItem = JSON.parse(item)
+    
+    console.log(parsedItem);
+    form.reset()
     localStorage.clear()
 }
